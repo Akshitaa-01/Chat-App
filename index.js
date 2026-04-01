@@ -17,7 +17,11 @@ io.on('connection', (socket) => {                                           //li
     socket.on("disconnect",()=>{                                                //socket->specified user
         console.log("user disconnected");
     });
+    socket.on("chatMsg",(msg)=>{
+        io.emit("chatMsg",msg);
+    });
 });
 server.listen(port,()=>{
     console.log("app is listening");
 });
+
