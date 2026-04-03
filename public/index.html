@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App</title>
+    <title>Join Chat</title>
 </head>
 <body>
-    <div class="messages">
-        <form>
-            <input/>
-            <button type="button">Send</button>
-        </form>
-    </div>
-
-    <script src="/socket.io/socket.io.js"></script>                             <!--   loads socket.io client from server -->                                                           
-    <script src="/script.js"></script>
+    <h2>Join Chat</h2>
+    <form id="Join-Chat"> 
+        <input placeholder="Enter your username" name="username" id="username" required/>
+        <button type="button">Enter</button>
+    </form>
+    <script src="/join.js"></script>
 </body>
 </html>
