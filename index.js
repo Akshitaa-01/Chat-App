@@ -16,13 +16,18 @@ io.on('connection', (socket) => {                                           //li
     console.log("user connected");                                               //connection and disconnect is event
     socket.on("disconnect",()=>{                                                //socket->specified user
         console.log("user disconnected");
+        socket.broadcast.emit("userleft",(socket.username));
     });
     socket.on("chatMsg",(data)=>{
         io.emit("chatMsg",data);
     });                                                                              //socket.broadcast.emit()=only to other 
-    socket.on("userJoined",(username)=>{                                             //socket.io=to only thst user
+    socket.on("userJoined",(username)=>{          
+        socket.username=username                                                                                   //socket.io=to only thst user
         socket.broadcast.emit("userJoined",(username));                                           //io.emit=to all including sender  
     })
+    socket.on("usertyping",(username)=>{
+        socket.broadcast.emit("usertyping",username);
+    }); 
 });
 server.listen(port,()=>{
     console.log("app is listening");
