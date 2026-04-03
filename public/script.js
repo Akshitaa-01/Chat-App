@@ -4,21 +4,33 @@ let inp=document.querySelector("input");
 let form=document.querySelector("form");
 let messages=document.querySelector(".messages");
 
-form.addEventListener("sumbit",(e)=>{
+let username=localStorage.getItem("username");
+
+socket.emit("userJoined",username);
+form.addEventListener("submit",(e)=>{
     e.preventDefault();
 });
 
 btn.addEventListener("click",()=>{
     let msg=inp.value;
     if (msg.trim()!==""){
-        socket.emit("chatMsg",msg);      //emit is basically send to server
+        socket.emit("chatMsg",{
+            username:username,
+            msg:msg
+        });      //emit is basically send to server
     }
     inp.value="";
     inp.focus();
 });
 
-socket.on("chatMsg",(msg)=>{
+socket.on("chatMsg",(data)=>{                                              //this is recieving msg form server to display
     const item=document.createElement("div");
-    item.textContent=msg;
+    item.textContent=data.username+":"+data.msg;
     messages.appendChild(item);
+});
+
+socket.on("userJoined",(username)=>{                                             
+    let user = document.createElement("user");
+    user.innerText = username + " joined the chat";
+    messages.appendChild(user);
 });

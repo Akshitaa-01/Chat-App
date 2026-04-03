@@ -17,9 +17,12 @@ io.on('connection', (socket) => {                                           //li
     socket.on("disconnect",()=>{                                                //socket->specified user
         console.log("user disconnected");
     });
-    socket.on("chatMsg",(msg)=>{
-        io.emit("chatMsg",msg);
-    });
+    socket.on("chatMsg",(data)=>{
+        io.emit("chatMsg",data);
+    });                                                                              //socket.broadcast.emit()=only to other 
+    socket.on("userJoined",(username)=>{                                             //socket.io=to only thst user
+        socket.broadcast.emit("userJoined",(username));                                           //io.emit=to all including sender  
+    })
 });
 server.listen(port,()=>{
     console.log("app is listening");
