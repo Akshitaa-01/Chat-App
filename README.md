@@ -15,15 +15,12 @@ This project is actively being developed. New features are being added regularly
 * Real-time messaging using sockets (basic implementation already working)
 * Message history stored in database
 
-##🛠️ Tech Stack
-*Frontend: HTML, JavaScript
-
-*Backend: Node.js, Express.js
-
-*Real-Time Communication: Socket.io
-
+## 🛠️ Tech Stack
+- **Frontend:** HTML, JavaScript  
+- **Backend:** Node.js, Express.js  
+- **Real-time:** Socket.io
+  
 ## ⚙️ Setup Instructions
-
 1. Clone the repository
 2. Install dependencies using `npm install`
 3. Run the server using `npm start`
